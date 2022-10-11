@@ -1,10 +1,12 @@
 import React from 'react'
+import Display from '../ui/Display'
 
 function Main() {
   return (
-    <div>
+    <>
+      <Display />
       
-    </div>
+    </>
   )
 }
 
