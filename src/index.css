@@ -6,7 +6,7 @@
 
 @layer components {
   body {
-    @apply bg-custom-orange-100 text-dark;
+    @apply text-dark;
   }
 }
 
@@ -22,7 +22,6 @@
   font-family: 'Poppins', sans-serif;
   font-size: 16px;
   line-height: 24px;
-  color-scheme: light dark;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
