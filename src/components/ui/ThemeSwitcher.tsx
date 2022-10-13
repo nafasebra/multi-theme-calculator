@@ -17,20 +17,20 @@ function ThemeSwitcher() {
       case 1:
         return 'translate-x-0';
       case 2:
-        return 'translate-x-[10px]';
+        return 'translate-x-[14px]';
       case 3:
-        return 'translate-x-[20px]';
+        return 'translate-x-[28px]';
       default:
         return '';
     }
   }
 
   return (
-    <div className='flex flex-col w-10'>
-      <div className='w-full flex items-center justify-between pb-1'>
-        <p className='text-sm'>1</p>
-        <p className='text-sm'>2</p>
-        <p className='text-sm'>3</p>
+    <div className='flex flex-col w-12'>
+      <div className='w-full flex items-center justify-between pb-2'>
+        <p className='text-xs'>1</p>
+        <p className='text-xs'>2</p>
+        <p className='text-xs'>3</p>
       </div>
       <div className='cursor-pointer w-full h-5 rounded-full p-1 bg-black' onClick={ChangeTheme}>
         <div className={`rounded-full w-3 h-3 bg-white ${HandleTranslate(theme)}`}></div>
