@@ -2,7 +2,7 @@ import React from 'react'
 
 function Display() {
   return (
-    <div className='rounded-lg py-8 px-10 text-3xl text-right'>
+    <div className='rounded-lg py-8 px-10 text-3xl text-right bg-input my-5'>
       1111.222
     </div>
   )
