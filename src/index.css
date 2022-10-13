@@ -6,7 +6,7 @@
 
 @layer components {
   body {
-    @apply text-dark;
+    @apply bg-main text-main;
   }
 }
 
@@ -29,13 +29,13 @@
   -webkit-text-size-adjust: 100%;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   min-height: 100vh;
   position: relative;
 }
 
-/* Handle themes */
 .theme_first {
   --text-color: #ffffff;
   --text-button-primary: #252D44;

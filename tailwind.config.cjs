@@ -4,17 +4,19 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
-      colors: {
-        "bg-main": "var(--background-main)",
-        "bg-keypad": "var(--background-keypad)",
-        "bg-input": "var(--background-input)",
-        "bg-btn-primary": "var(--button-primary)",
-        "bg-btn-secondary": "var(--button-secondary)",
-        "bg-btn-third": "var(--button-third)",
-        "color-main": "var(--text-color)",
-        "color-btn-primary": "var(--text-button-primary)",
-        "color-btn-secondary": "var(--text-button-secondary)",
+      textColor: {
+        "main": "var(--text-color)",
+        "btn-primary": "var(--text-button-primary)",
+        "btn-secondary": "var(--text-button-secondary)",
       },
+      backgroundColor: {
+        "main": "var(--background-main)",
+        "keypad": "var(--background-keypad)",
+        "input": "var(--background-input)",
+        "btn-primary": "var(--button-primary)",
+        "btn-secondary": "var(--button-secondary)",
+        "btn-third": "var(--button-third)",
+      }
     },
   },
   plugins: [],
