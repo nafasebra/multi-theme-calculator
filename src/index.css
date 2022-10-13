@@ -37,6 +37,9 @@ html, body {
 
 /* Handle themes */
 .theme_first {
+  --text-color: #ffffff;
+  --text-button-primary: #252D44;
+  --text-button-secondary: #ffffff;
   --background-main: #3B4664;
   --background-keypad: #252D44;
   --background-input: #252D44;
@@ -46,6 +49,9 @@ html, body {
 }
 
 .theme_second {
+  --text-color: #212121;
+  --text-button-primary: #212121;
+  --text-button-secondary: #ffffff;
   --background-main: #E6E6E6;
   --background-keypad: #D3CDCD;
   --background-input: #EEEEEE;
@@ -55,6 +61,9 @@ html, body {
 }
 
 .theme_third {
+  --text-color: #ffff00;
+  --text-button-primary: #ffff00;
+  --text-button-secondary: #ffffff;
   --background-main: #17062A;
   --background-keypad: #1E0836;
   --background-input: #1E0836;
