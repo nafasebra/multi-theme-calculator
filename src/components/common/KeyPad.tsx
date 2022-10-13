@@ -3,7 +3,7 @@ import Button from '../ui/Button'
 
 function KeyPad() {
   return (
-    <div className='grid grid-cols-4 grid-rows-5 gap-4 text-2xl font-bold bg-keypad rounded-lg p-5'>
+    <div className='grid grid-cols-4 grid-rows-5 gap-4 text-2xl font-bold bg-keypad rounded-lg p-5 relative -z-20'>
       <Button text='7' includedStyle='bg-btn-primary text-btn-primary' />
       <Button text='8' includedStyle='bg-btn-primary text-btn-primary' />
       <Button text='9' includedStyle='bg-btn-primary text-btn-primary' />
