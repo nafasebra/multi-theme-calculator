@@ -34,3 +34,31 @@ html, body {
   min-height: 100vh;
   position: relative;
 }
+
+/* Handle themes */
+.theme_first {
+  --background-main: #3B4664;
+  --background-keypad: #252D44;
+  --background-input: #252D44;
+  --button-primary: #EAE3DB;
+  --button-secondary: #647299;
+  --button-third: #D13F30;
+}
+
+.theme_second {
+  --background-main: #E6E6E6;
+  --background-keypad: #D3CDCD;
+  --background-input: #EEEEEE;
+  --button-primary: #E5E4E0;
+  --button-secondary: #388187;
+  --button-third: #C85401;
+}
+
+.theme_third {
+  --background-main: #17062A;
+  --background-keypad: #1E0836;
+  --background-input: #1E0836;
+  --button-primary: #331B4D;
+  --button-secondary: #56077C;
+  --button-third: #00DECF;
+}
