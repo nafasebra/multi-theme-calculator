@@ -15,7 +15,7 @@ export const CalculateContext = createContext<ContextType>({
 });
 
 export const CalculateProvider = ({ children }: PropType) => {
-  const [input, setInput] = useState<string>("");
+  const [input, setInput] = useState<string>("0");
 
   return (
     <CalculateContext.Provider value={{ input, setInput }}>
