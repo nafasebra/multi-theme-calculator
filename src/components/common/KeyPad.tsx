@@ -18,7 +18,7 @@ function KeyPad() {
       case "/":
         return false;
       case "RESET":
-        return false;
+        useCalcContext.setInput('0');
       case "=":
         return false;
       default:
