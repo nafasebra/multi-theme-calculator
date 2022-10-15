@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { CalculateContext } from "../../context/CalculateContext";
-import { AddChar, RemoveLastChar } from "../../utils/common";
+import { AddChar, RemoveLastChar } from "../../helper/common";
 import Button from "../ui/Button";
 
 function KeyPad() {
