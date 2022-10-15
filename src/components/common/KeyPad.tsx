@@ -116,7 +116,7 @@ function KeyPad() {
       <Button
         handleClick={() => HandleButtonCLick("=")}
         text="="
-        includedStyle="bg-btn-third col-span-2"
+        includedStyle="bg-btn-third text-btn-third col-span-2"
       />
     </div>
   );

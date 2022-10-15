@@ -8,6 +8,7 @@ module.exports = {
         "main": "var(--text-color)",
         "btn-primary": "var(--text-button-primary)",
         "btn-secondary": "var(--text-button-secondary)",
+        "btn-third": "var(--button-primary)",
       },
       backgroundColor: {
         "main": "var(--background-main)",
