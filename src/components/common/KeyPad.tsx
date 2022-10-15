@@ -27,7 +27,7 @@ function KeyPad() {
   };
 
   return (
-    <div className="grid grid-cols-4 grid-rows-5 gap-4 text-2xl font-bold bg-keypad rounded-lg p-5 relative -z-20">
+    <div className="grid grid-cols-4 grid-rows-5 gap-4 text-xl md:text-2xl font-bold bg-keypad rounded-lg p-5 relative -z-20">
       <Button
         handleClick={() => HandleButtonCLick("7")}
         text="7"
