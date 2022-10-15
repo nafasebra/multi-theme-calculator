@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { CalculateContext } from "../../context/CalculateContext";
-import { AddChar } from "../../utils/common";
+import { AddChar, RemoveLastChar } from "../../utils/common";
 import Button from "../ui/Button";
 
 function KeyPad() {
@@ -8,7 +8,7 @@ function KeyPad() {
   const HandleButtonCLick = (text: string) => {
     switch (text) {
       case "DEL":
-        return false;
+        useCalcContext.setInput(RemoveLastChar(useCalcContext.input));
       case "+":
         return false;
       case "-":
