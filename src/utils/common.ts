@@ -3,7 +3,7 @@ export function RemoveLastChar(str: string) {
   return "0";
 }
 
-export function AddChar(str: string) {
-  if (str.length <= 15) str += str;
-  return str;
+export function AddChar(str: string = '', prevValue: string = '') {
+  if (prevValue.length <= 15) prevValue += str;
+  return prevValue;
 }

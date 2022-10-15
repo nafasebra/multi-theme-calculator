@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CalculateContext } from "../../context/CalculateContext";
+import { AddChar } from "../../utils/common";
 import Button from "../ui/Button";
 
 function KeyPad() {
+  const useCalcContext = useContext(CalculateContext);
   const HandleButtonCLick = (text: string) => {
     switch (text) {
       case "DEL":
@@ -18,8 +21,8 @@ function KeyPad() {
         return false;
       case "=":
         return false;
-      default: 
-        return true;
+      default:
+        useCalcContext.setInput(AddChar(text, useCalcContext.input));
     }
   };
 
