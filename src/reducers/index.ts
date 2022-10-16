@@ -1,10 +1,9 @@
-import Display from "../components/ui/Display";
-
 enum CalculateAction {
   ADD_FIRST_NUMBER = "ADD_FIRST_NUMBER",
   ADD_SECOND_NUMBER = "ADD_SECOND_NUMBER",
   REMOVE_LAST_CHAR = "REMOVE_LAST_CHAR",
   RESET = "RESET",
+  ADD_TO_DISPLAY = "ADD_TO_DISPLAY",
   SUM_OPERATOR = "SUM_OPERATOR",
   MINUS_OPERATOR = "MINUS_OPERATOR",
   DIVIDE_OPERATOR = "DIVIDE_OPERATOR",
@@ -54,6 +53,11 @@ export function reducer(state = initialState, action: CalculateActionType) {
         secondNumber: "0",
         operator: "",
         display: "0",
+      };
+    case "ADD_TO_DISPLAY":
+      return {
+        ...state,
+        display: state.display + payload
       };
     case "SUM_OPERATOR":
       return {
