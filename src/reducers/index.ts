@@ -10,7 +10,7 @@ enum CalculateAction {
   MULTIPLY_OPERATOR = "MULTIPLY_OPERATOR",
 }
 
-type CalculateType = {
+export type CalculateType = {
   firstNumber: string;
   secondNumber: string;
   operator: string;
@@ -22,7 +22,7 @@ interface CalculateActionType {
   payload: CalculateType | string;
 }
 
-const initialState: CalculateType = {
+export const initialState: CalculateType = {
   firstNumber: "0",
   secondNumber: "0",
   operator: "",

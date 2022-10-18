@@ -1,8 +1,9 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useReducer, useState } from "react";
+import { reducer, initialState, CalculateType } from "../reducers";
 
 type ContextType = {
-  input: string;
-  setInput: (input: string) => void;
+  state: CalculateType;
+  dispatch: React.Dispatch<any>;
 };
 
 type PropType = {
@@ -10,15 +11,15 @@ type PropType = {
 };
 
 export const CalculateContext = createContext<ContextType>({
-  input: "",
-  setInput: () => {},
+  state: initialState,
+  dispatch: () => {},
 });
 
 export const CalculateProvider = ({ children }: PropType) => {
-  const [input, setInput] = useState<string>("0");
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
-    <CalculateContext.Provider value={{ input, setInput }}>
+    <CalculateContext.Provider value={{ state, dispatch }}>
       {children}
     </CalculateContext.Provider>
   );
