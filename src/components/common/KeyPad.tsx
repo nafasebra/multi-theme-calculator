@@ -5,29 +5,38 @@ import Button from "../ui/Button";
 
 function KeyPad() {
   const useCalcContext = useContext(CalculateContext);
+
+  console.log(useCalcContext.state);
+
   const HandleButtonCLick = (text: string) => {
     switch (text) {
       case "DEL":
-        useCalcContext.dispatch({type: CalculateAction.REMOVE_LAST_CHAR});
+        useCalcContext.dispatch({ type: CalculateAction.REMOVE_LAST_CHAR });
+        break;
       case "+":
-        useCalcContext.dispatch({type: CalculateAction.ADD_FIRST_NUMBER});
-        useCalcContext.dispatch({type: CalculateAction.SUM_OPERATOR});
+        useCalcContext.dispatch({ type: CalculateAction.SUM_OPERATOR });
+        break;
       case "-":
-        useCalcContext.dispatch({type: CalculateAction.ADD_FIRST_NUMBER});
-        useCalcContext.dispatch({type: CalculateAction.MINUS_OPERATOR});
+        useCalcContext.dispatch({ type: CalculateAction.MINUS_OPERATOR });
+        break;
       case "x":
-        useCalcContext.dispatch({type: CalculateAction.ADD_FIRST_NUMBER});
-        useCalcContext.dispatch({type: CalculateAction.MULTIPLY_OPERATOR});
+        useCalcContext.dispatch({ type: CalculateAction.MULTIPLY_OPERATOR });
+        break;
       case "/":
-        useCalcContext.dispatch({type: CalculateAction.ADD_FIRST_NUMBER});
-        useCalcContext.dispatch({type: CalculateAction.DIVIDE_OPERATOR});
+        useCalcContext.dispatch({ type: CalculateAction.DIVIDE_OPERATOR });
+        break;
       case "RESET":
-        useCalcContext.dispatch({type: CalculateAction.RESET});
+        useCalcContext.dispatch({ type: CalculateAction.RESET });
+        break;
       case "=":
         return false;
       default:
-        console.log('click')
-        useCalcContext.dispatch({type: CalculateAction.ADD_TO_DISPLAY, payload: text});
+        console.log("click");
+        useCalcContext.dispatch({
+          type: CalculateAction.ADD_TO_DISPLAY,
+          payload: text,
+        });
+        break;
     }
   };
 

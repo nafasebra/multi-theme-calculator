@@ -1,6 +1,4 @@
 export enum CalculateAction {
-  ADD_FIRST_NUMBER = "ADD_FIRST_NUMBER",
-  ADD_SECOND_NUMBER = "ADD_SECOND_NUMBER",
   REMOVE_LAST_CHAR = "REMOVE_LAST_CHAR",
   RESET = "RESET",
   ADD_TO_DISPLAY = "ADD_TO_DISPLAY",
@@ -31,53 +29,47 @@ export const initialState: CalculateType = {
 
 export function reducer(state = initialState, action: CalculateActionType) {
   const { type, payload } = action;
+  const { display } = state;
+
   switch (type) {
-    case "ADD_FIRST_NUMBER":
+    case CalculateAction.REMOVE_LAST_CHAR:
       return {
         ...state,
-        firstNumber: payload,
+        display: display.length > 1 ? display.slice(0, display.length - 1) : "0",
       };
-    case "ADD_SECOND_NUMBER":
-      return {
-        ...state,
-        secondNumber: payload,
-      };
-    case "REMOVE_LAST_CHAR":
-      return {
-        ...state,
-        display: state.display.slice(0, state.display.length - 2),
-      };
-    case "RESET":
+    case CalculateAction.RESET:
       return {
         firstNumber: "0",
         secondNumber: "0",
         operator: "",
         display: "0",
       };
-    case "ADD_TO_DISPLAY":
+    case CalculateAction.ADD_TO_DISPLAY:
       return {
         ...state,
-        display: state.display + payload
+        display: display === "0" ? payload : display + payload
       };
-    case "SUM_OPERATOR":
+    case CalculateAction.SUM_OPERATOR:
       return {
         ...state,
         operator: '+',
       };
-    case "MINUS_OPERATOR":
+    case CalculateAction.MINUS_OPERATOR:
       return {
         ...state,
         operator: '-',
       };
-    case "DIVIDE_OPERATOR":
+    case CalculateAction.DIVIDE_OPERATOR:
       return {
         ...state,
         operator: '/',
       };
-    case "MULTIPLY_OPERATOR":
+    case CalculateAction.MULTIPLY_OPERATOR:
       return {
         ...state,
         operator: '*',
       };
+    default: 
+      return state;
   }
 }

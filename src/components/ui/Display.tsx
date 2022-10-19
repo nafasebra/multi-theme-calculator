@@ -5,7 +5,7 @@ function Display() {
   const useCalContext = useContext(CalculateContext);
 
   return (
-    <div className='rounded-lg p-8 text-3xl font-bold text-right bg-input my-5'>
+    <div className='select-none rounded-lg p-8 text-3xl font-bold text-right bg-input my-5'>
       {useCalContext.state.display}
     </div>
   )
