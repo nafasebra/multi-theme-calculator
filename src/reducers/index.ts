@@ -1,4 +1,4 @@
-enum CalculateAction {
+export enum CalculateAction {
   ADD_FIRST_NUMBER = "ADD_FIRST_NUMBER",
   ADD_SECOND_NUMBER = "ADD_SECOND_NUMBER",
   REMOVE_LAST_CHAR = "REMOVE_LAST_CHAR",

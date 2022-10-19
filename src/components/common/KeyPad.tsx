@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { CalculateContext } from "../../context/CalculateContext";
-import { AddChar, RemoveLastChar } from "../../helper/common";
+import { CalculateAction } from "../../reducers";
 import Button from "../ui/Button";
 
 function KeyPad() {
@@ -8,21 +8,25 @@ function KeyPad() {
   const HandleButtonCLick = (text: string) => {
     switch (text) {
       case "DEL":
-        useCalcContext.setInput(RemoveLastChar(useCalcContext.input));
+        useCalcContext.dispatch({type: CalculateAction.REMOVE_LAST_CHAR});
       case "+":
-        return false;
+        useCalcContext.dispatch({type: CalculateAction.ADD_FIRST_NUMBER});
+        useCalcContext.dispatch({type: CalculateAction.SUM_OPERATOR});
       case "-":
-        return false;
+        useCalcContext.dispatch({type: CalculateAction.ADD_FIRST_NUMBER});
+        useCalcContext.dispatch({type: CalculateAction.MINUS_OPERATOR});
       case "x":
-        return false;
+        useCalcContext.dispatch({type: CalculateAction.ADD_FIRST_NUMBER});
+        useCalcContext.dispatch({type: CalculateAction.MULTIPLY_OPERATOR});
       case "/":
-        return false;
+        useCalcContext.dispatch({type: CalculateAction.ADD_FIRST_NUMBER});
+        useCalcContext.dispatch({type: CalculateAction.DIVIDE_OPERATOR});
       case "RESET":
-        useCalcContext.setInput('0');
+        useCalcContext.dispatch({type: CalculateAction.RESET});
       case "=":
         return false;
       default:
-        useCalcContext.setInput(AddChar(text, useCalcContext.input));
+        useCalcContext.dispatch({type: CalculateAction.ADD_TO_DISPLAY, payload: text});
     }
   };
 

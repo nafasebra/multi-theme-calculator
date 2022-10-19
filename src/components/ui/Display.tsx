@@ -6,7 +6,7 @@ function Display() {
 
   return (
     <div className='rounded-lg p-8 text-3xl font-bold text-right bg-input my-5'>
-      {useCalContext.input}
+      {useCalContext.state.display}
     </div>
   )
 }
