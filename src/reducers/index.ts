@@ -1,3 +1,5 @@
+import * as calculator from '../utils/calculate'
+
 export enum CalculateAction {
   REMOVE_LAST_CHAR = "REMOVE_LAST_CHAR",
   RESET = "RESET",
@@ -55,113 +57,17 @@ export function reducer(state = initialState, action: CalculateActionType) {
         secondNumber: operator !== "" ? displaiedNumber : "",
       };
     case CalculateAction.SUM_OPERATOR:
-      sum(state);
+      calculator.Sum(state);
     case CalculateAction.MINUS_OPERATOR:
-      minus(state);
+      calculator.Minus(state);
     case CalculateAction.DIVIDE_OPERATOR:
-      divide(state);
+      calculator.Divide(state);
     case CalculateAction.MULTIPLY_OPERATOR:
-      multiply(state);
+      calculator.Multiply(state);
     case CalculateAction.EQUAL_TO:
-      equal(state);
+      calculator.Equal(state);
     default:
       return state;
   }
 }
 
-
-function sum(state: CalculateType) {
-  if (state.operator === "") {
-    return {
-      ...state,
-      operator: "+",
-    };
-  }
-  let sumNumbers: number =
-    Number(state.firstNumber) + Number(state.secondNumber);
-  return {
-    ...state,
-    firstNumber: sumNumbers,
-    display: sumNumbers,
-  };
-}
-
-function minus(state: CalculateType) {
-  if (state.operator === "") {
-    return {
-      ...state,
-      operator: "-",
-    };
-  }
-  let minusNumbers: number =
-    Number(state.firstNumber) - Number(state.secondNumber);
-  return {
-    ...state,
-    firstNumber: minusNumbers,
-    display: minusNumbers,
-  };
-}
-
-function multiply(state: CalculateType) {
-  if (state.operator === "") {
-    return {
-      ...state,
-      operator: "*",
-    };
-  }
-  let multiplyNumbers: number =
-    Number(state.firstNumber) * Number(state.secondNumber);
-  return {
-    ...state,
-    firstNumber: multiplyNumbers,
-    display: multiplyNumbers,
-  };
-}
-
-function divide(state: CalculateType) {
-  if (state.operator === "") {
-    return {
-      ...state,
-      operator: "/",
-    };
-  }
-  let divideNumbers: number =
-    Number(state.firstNumber) / Number(state.secondNumber);
-  return {
-    ...state,
-    firstNumber: divideNumbers,
-    display: divideNumbers,
-  };
-}
-
-function equal(state: CalculateType) {
-  if (state.firstNumber !== "" && state.secondNumber !== "") {
-    switch (state.operator) {
-      case "+":
-        return {
-          ...state,
-          display: Number(state.firstNumber) + Number(state.secondNumber),
-        };
-      case "-":
-        return {
-          ...state,
-          display: Number(state.firstNumber) - Number(state.secondNumber),
-        };
-      case "*":
-        return {
-          ...state,
-          display: Number(state.firstNumber) * Number(state.secondNumber),
-        };
-      case "/":
-        return {
-          ...state,
-          display: (
-            Number(state.firstNumber) / Number(state.secondNumber)
-          ).toFixed(10),
-        };
-      default:
-        return state;
-    }
-  }
-  return state;
-}
