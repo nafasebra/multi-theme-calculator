@@ -52,29 +52,77 @@ export function reducer(state = initialState, action: CalculateActionType) {
         display: display === "0" ? payload : display + payload,
       };
     case CalculateAction.SUM_OPERATOR:
-      return {
-        ...state,
-        operator: "+",
-      };
+      sum(state);
     case CalculateAction.MINUS_OPERATOR:
-      return {
-        ...state,
-        operator: "-",
-      };
+      minus(state)
     case CalculateAction.DIVIDE_OPERATOR:
-      return {
-        ...state,
-        operator: "/",
-      };
+      divide(state)
     case CalculateAction.MULTIPLY_OPERATOR:
-      return {
-        ...state,
-        operator: "*",
-      };
+      multiply(state);
     case CalculateAction.EQUAL_TO:
       equal(state);
     default:
       return state;
+  }
+}
+
+function sum(state: CalculateType) {
+  if(state.operator === "") {
+    return {
+      ...state,
+      operator: '+'
+    }
+  }
+  let sumNumbers: number = Number(state.firstNumber) + Number(state.secondNumber)
+  return {
+    ...state,
+    firstNumber: sumNumbers,
+    display: sumNumbers,
+  }
+}
+
+function minus(state: CalculateType) {
+  if(state.operator === "") {
+    return {
+      ...state,
+      operator: '-'
+    }
+  }
+  let minusNumbers: number = Number(state.firstNumber) - Number(state.secondNumber)
+  return {
+    ...state,
+    firstNumber: minusNumbers,
+    display: minusNumbers,
+  }
+}
+
+function multiply(state: CalculateType) {
+  if(state.operator === "") {
+    return {
+      ...state,
+      operator: '*'
+    }
+  }
+  let multiplyNumbers: number = Number(state.firstNumber) * Number(state.secondNumber)
+  return {
+    ...state,
+    firstNumber: multiplyNumbers,
+    display: multiplyNumbers,
+  }
+}
+
+function divide(state: CalculateType) {
+  if(state.operator === "") {
+    return {
+      ...state,
+      operator: '/'
+    }
+  }
+  let divideNumbers: number = Number(state.firstNumber) / Number(state.secondNumber)
+  return {
+    ...state,
+    firstNumber: divideNumbers,
+    display: divideNumbers,
   }
 }
 
