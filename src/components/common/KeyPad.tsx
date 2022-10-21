@@ -32,7 +32,6 @@ function KeyPad() {
         useCalcContext.dispatch({ type: CalculateAction.EQUAL_TO });
         break;
       default:
-        console.log("click");
         useCalcContext.dispatch({
           type: CalculateAction.ADD_TO_DISPLAY,
           payload: text,

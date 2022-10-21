@@ -72,9 +72,40 @@ export function reducer(state = initialState, action: CalculateActionType) {
         operator: "*",
       };
     case CalculateAction.EQUAL_TO:
-      // i will be change this
-      return state;
+      equal(state);
     default:
       return state;
   }
+}
+
+function equal(state: CalculateType) {
+  if (state.firstNumber !== "" && state.secondNumber !== "") {
+    switch (state.operator) {
+      case "+":
+        return {
+          ...state,
+          display: Number(state.firstNumber) + Number(state.secondNumber),
+        };
+      case "-":
+        return {
+          ...state,
+          display: Number(state.firstNumber) - Number(state.secondNumber),
+        };
+      case "*":
+        return {
+          ...state,
+          display: Number(state.firstNumber) * Number(state.secondNumber),
+        };
+      case "/":
+        return {
+          ...state,
+          display: (
+            Number(state.firstNumber) / Number(state.secondNumber)
+          ).toFixed(10),
+        };
+      default:
+        return state;
+    }
+  }
+  return state;
 }
