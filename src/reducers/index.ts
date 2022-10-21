@@ -30,7 +30,7 @@ export const initialState: CalculateType = {
 
 export function reducer(state = initialState, action: CalculateActionType) {
   const { type, payload } = action;
-  const { display } = state;
+  const { display, operator } = state;
 
   switch (type) {
     case CalculateAction.REMOVE_LAST_CHAR:
@@ -47,16 +47,19 @@ export function reducer(state = initialState, action: CalculateActionType) {
         display: "0",
       };
     case CalculateAction.ADD_TO_DISPLAY:
+      let displaiedNumber = display === "0" ? payload : display + payload
       return {
         ...state,
-        display: display === "0" ? payload : display + payload,
+        firstNumber: operator === "" ? displaiedNumber : "",
+        display: displaiedNumber,
+        secondNumber: operator !== "" ? displaiedNumber : "",
       };
     case CalculateAction.SUM_OPERATOR:
       sum(state);
     case CalculateAction.MINUS_OPERATOR:
-      minus(state)
+      minus(state);
     case CalculateAction.DIVIDE_OPERATOR:
-      divide(state)
+      divide(state);
     case CalculateAction.MULTIPLY_OPERATOR:
       multiply(state);
     case CalculateAction.EQUAL_TO:
@@ -66,64 +69,69 @@ export function reducer(state = initialState, action: CalculateActionType) {
   }
 }
 
+
 function sum(state: CalculateType) {
-  if(state.operator === "") {
+  if (state.operator === "") {
     return {
       ...state,
-      operator: '+'
-    }
+      operator: "+",
+    };
   }
-  let sumNumbers: number = Number(state.firstNumber) + Number(state.secondNumber)
+  let sumNumbers: number =
+    Number(state.firstNumber) + Number(state.secondNumber);
   return {
     ...state,
     firstNumber: sumNumbers,
     display: sumNumbers,
-  }
+  };
 }
 
 function minus(state: CalculateType) {
-  if(state.operator === "") {
+  if (state.operator === "") {
     return {
       ...state,
-      operator: '-'
-    }
+      operator: "-",
+    };
   }
-  let minusNumbers: number = Number(state.firstNumber) - Number(state.secondNumber)
+  let minusNumbers: number =
+    Number(state.firstNumber) - Number(state.secondNumber);
   return {
     ...state,
     firstNumber: minusNumbers,
     display: minusNumbers,
-  }
+  };
 }
 
 function multiply(state: CalculateType) {
-  if(state.operator === "") {
+  if (state.operator === "") {
     return {
       ...state,
-      operator: '*'
-    }
+      operator: "*",
+    };
   }
-  let multiplyNumbers: number = Number(state.firstNumber) * Number(state.secondNumber)
+  let multiplyNumbers: number =
+    Number(state.firstNumber) * Number(state.secondNumber);
   return {
     ...state,
     firstNumber: multiplyNumbers,
     display: multiplyNumbers,
-  }
+  };
 }
 
 function divide(state: CalculateType) {
-  if(state.operator === "") {
+  if (state.operator === "") {
     return {
       ...state,
-      operator: '/'
-    }
+      operator: "/",
+    };
   }
-  let divideNumbers: number = Number(state.firstNumber) / Number(state.secondNumber)
+  let divideNumbers: number =
+    Number(state.firstNumber) / Number(state.secondNumber);
   return {
     ...state,
     firstNumber: divideNumbers,
     display: divideNumbers,
-  }
+  };
 }
 
 function equal(state: CalculateType) {
