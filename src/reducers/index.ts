@@ -6,6 +6,7 @@ export enum CalculateAction {
   MINUS_OPERATOR = "MINUS_OPERATOR",
   DIVIDE_OPERATOR = "DIVIDE_OPERATOR",
   MULTIPLY_OPERATOR = "MULTIPLY_OPERATOR",
+  EQUAL_TO = "EQUAL_TO",
 }
 
 export type CalculateType = {
@@ -35,7 +36,8 @@ export function reducer(state = initialState, action: CalculateActionType) {
     case CalculateAction.REMOVE_LAST_CHAR:
       return {
         ...state,
-        display: display.length > 1 ? display.slice(0, display.length - 1) : "0",
+        display:
+          display.length > 1 ? display.slice(0, display.length - 1) : "0",
       };
     case CalculateAction.RESET:
       return {
@@ -47,29 +49,32 @@ export function reducer(state = initialState, action: CalculateActionType) {
     case CalculateAction.ADD_TO_DISPLAY:
       return {
         ...state,
-        display: display === "0" ? payload : display + payload
+        display: display === "0" ? payload : display + payload,
       };
     case CalculateAction.SUM_OPERATOR:
       return {
         ...state,
-        operator: '+',
+        operator: "+",
       };
     case CalculateAction.MINUS_OPERATOR:
       return {
         ...state,
-        operator: '-',
+        operator: "-",
       };
     case CalculateAction.DIVIDE_OPERATOR:
       return {
         ...state,
-        operator: '/',
+        operator: "/",
       };
     case CalculateAction.MULTIPLY_OPERATOR:
       return {
         ...state,
-        operator: '*',
+        operator: "*",
       };
-    default: 
+    case CalculateAction.EQUAL_TO:
+      // i will be change this
+      return state;
+    default:
       return state;
   }
 }

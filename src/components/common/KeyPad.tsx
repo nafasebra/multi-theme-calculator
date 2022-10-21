@@ -29,7 +29,8 @@ function KeyPad() {
         useCalcContext.dispatch({ type: CalculateAction.RESET });
         break;
       case "=":
-        return false;
+        useCalcContext.dispatch({ type: CalculateAction.EQUAL_TO });
+        break;
       default:
         console.log("click");
         useCalcContext.dispatch({
