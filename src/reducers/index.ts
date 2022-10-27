@@ -32,7 +32,7 @@ export const initialState: CalculateType = {
 
 export function reducer(state = initialState, action: CalculateActionType) {
   const { type, payload } = action;
-  const { display, operator } = state;
+  const { display, operator, firstNumber, secondNumber } = state;
 
   switch (type) {
     case CalculateAction.REMOVE_LAST_CHAR:
@@ -52,22 +52,23 @@ export function reducer(state = initialState, action: CalculateActionType) {
       let displaiedNumber = display === "0" ? payload : display + payload
       return {
         ...state,
-        firstNumber: operator === "" ? displaiedNumber : "",
-        display: displaiedNumber,
-        secondNumber: operator !== "" ? displaiedNumber : "",
+        firstNumber: operator === "" ? display : firstNumber,
+        display: operator !== "" && firstNumber !== "0" && secondNumber === "0" ? "0" : displaiedNumber,
+        secondNumber: operator !== "" ? display : secondNumber,
       };
     case CalculateAction.SUM_OPERATOR:
-      calculator.Sum(state);
+      return calculator.Sum(state);
     case CalculateAction.MINUS_OPERATOR:
-      calculator.Minus(state);
+      return calculator.Minus(state);
     case CalculateAction.DIVIDE_OPERATOR:
-      calculator.Divide(state);
+      return calculator.Divide(state);
     case CalculateAction.MULTIPLY_OPERATOR:
-      calculator.Multiply(state);
+      return calculator.Multiply(state);
     case CalculateAction.EQUAL_TO:
-      calculator.Equal(state);
+      return calculator.Equal(state);
     default:
       return state;
   }
 }
+
 

@@ -19,7 +19,7 @@ function KeyPad() {
       case "-":
         useCalcContext.dispatch({ type: CalculateAction.MINUS_OPERATOR });
         break;
-      case "x":
+      case "*":
         useCalcContext.dispatch({ type: CalculateAction.MULTIPLY_OPERATOR });
         break;
       case "/":
@@ -118,7 +118,7 @@ function KeyPad() {
         includedStyle="bg-btn-primary text-btn-primary"
       />
       <Button
-        handleClick={() => HandleButtonCLick("x")}
+        handleClick={() => HandleButtonCLick("*")}
         text="x"
         includedStyle="bg-btn-primary text-btn-primary"
       />

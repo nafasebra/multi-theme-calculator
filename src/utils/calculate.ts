@@ -1,67 +1,79 @@
 import { CalculateType } from "../reducers";
 
 export function Sum(state: CalculateType) {
-  if (state.operator === "") {
+  if (state.firstNumber !== "0") {
+    if (state.operator === "") {
+      return {
+        ...state,
+        operator: "+",
+      };
+    }
+    let sumNumbers: number =
+      Number(state.firstNumber) + Number(state.secondNumber);
     return {
       ...state,
-      operator: "+",
+      firstNumber: sumNumbers.toString(),
+      display: sumNumbers.toString(),
     };
   }
-  let sumNumbers: number =
-    Number(state.firstNumber) + Number(state.secondNumber);
-  return {
-    ...state,
-    firstNumber: sumNumbers,
-    display: sumNumbers,
-  };
+  return state;
 }
 
 export function Minus(state: CalculateType) {
-  if (state.operator === "") {
+  if (state.firstNumber !== "0") {
+    if (state.operator === "") {
+      return {
+        ...state,
+        operator: "-",
+      };
+    }
+    let minusNumbers: number =
+      Number(state.firstNumber) - Number(state.secondNumber);
     return {
       ...state,
-      operator: "-",
+      firstNumber: minusNumbers.toString(),
+      display: minusNumbers.toString(),
     };
   }
-  let minusNumbers: number =
-    Number(state.firstNumber) - Number(state.secondNumber);
-  return {
-    ...state,
-    firstNumber: minusNumbers,
-    display: minusNumbers,
-  };
+  return state;
 }
 
 export function Multiply(state: CalculateType) {
-  if (state.operator === "") {
+  if (state.firstNumber !== "0") {
+    if (state.operator === "") {
+      return {
+        ...state,
+        operator: "*",
+      };
+    }
+    let multiplyNumbers: number =
+      Number(state.firstNumber) * Number(state.secondNumber);
     return {
       ...state,
-      operator: "*",
+      firstNumber: multiplyNumbers.toString(),
+      display: multiplyNumbers.toString(),
     };
   }
-  let multiplyNumbers: number =
-    Number(state.firstNumber) * Number(state.secondNumber);
-  return {
-    ...state,
-    firstNumber: multiplyNumbers,
-    display: multiplyNumbers,
-  };
+  return state;
 }
 
 export function Divide(state: CalculateType) {
-  if (state.operator === "") {
+  if (state.firstNumber !== "0") {
+    if (state.operator === "") {
+      return {
+        ...state,
+        operator: "/",
+      };
+    }
+    let divideNumbers: number =
+      Number(state.firstNumber) / Number(state.secondNumber);
     return {
       ...state,
-      operator: "/",
+      firstNumber: divideNumbers.toString(),
+      display: divideNumbers.toString(),
     };
   }
-  let divideNumbers: number =
-    Number(state.firstNumber) / Number(state.secondNumber);
-  return {
-    ...state,
-    firstNumber: divideNumbers,
-    display: divideNumbers,
-  };
+  return state;
 }
 
 export function Equal(state: CalculateType) {
@@ -70,21 +82,25 @@ export function Equal(state: CalculateType) {
       case "+":
         return {
           ...state,
+          operator: "",
           display: Number(state.firstNumber) + Number(state.secondNumber),
         };
       case "-":
         return {
           ...state,
+          operator: "",
           display: Number(state.firstNumber) - Number(state.secondNumber),
         };
       case "*":
         return {
           ...state,
+          operator: "",
           display: Number(state.firstNumber) * Number(state.secondNumber),
         };
       case "/":
         return {
           ...state,
+          operator: "",
           display: (
             Number(state.firstNumber) / Number(state.secondNumber)
           ).toFixed(10),
