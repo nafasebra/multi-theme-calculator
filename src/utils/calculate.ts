@@ -1,113 +1,40 @@
 import { CalculateType } from "../reducers";
 
-export function Sum(state: CalculateType) {
-  if (state.firstNumber !== "0") {
-    if (state.operator === "") {
-      return {
-        ...state,
-        operator: "+",
-      };
-    }
-    let sumNumbers: number =
-      Number(state.firstNumber) + Number(state.secondNumber);
-    return {
-      ...state,
-      firstNumber: sumNumbers.toString(),
-      display: sumNumbers.toString(),
-    };
-  }
-  return state;
+export function Operation(state: CalculateType, payload: string | CalculateType) {
+  return {
+    ...state,
+    operator: payload,
+    number: "0",
+    display:
+      state.display === "0" && state.number !== ""
+        ? state.number
+        : state.display,
+  };
 }
 
-export function Minus(state: CalculateType) {
-  if (state.firstNumber !== "0") {
-    if (state.operator === "") {
-      return {
-        ...state,
-        operator: "-",
-      };
-    }
-    let minusNumbers: number =
-      Number(state.firstNumber) - Number(state.secondNumber);
-    return {
-      ...state,
-      firstNumber: minusNumbers.toString(),
-      display: minusNumbers.toString(),
-    };
-  }
-  return state;
-}
+const CustomMath = (a: number, b: number, operator: string) =>
+  operator === "+"
+    ? a + b
+    : operator === "-"
+    ? a - b
+    : operator === "*"
+    ? a * b
+    : a / b;
 
-export function Multiply(state: CalculateType) {
-  if (state.firstNumber !== "0") {
-    if (state.operator === "") {
-      return {
-        ...state,
-        operator: "*",
-      };
-    }
-    let multiplyNumbers: number =
-      Number(state.firstNumber) * Number(state.secondNumber);
+export function Equals(state: CalculateType) {
+  if (state.operator !== "" && state.number !== "") {
     return {
-      ...state,
-      firstNumber: multiplyNumbers.toString(),
-      display: multiplyNumbers.toString(),
+      operator: "",
+      number: "0",
+      display:
+        state.number === "0" && state.operator === "/"
+          ? "Error divide with 0"
+          : CustomMath(
+              Number(state.display),
+              Number(state.number),
+              state.operator
+            ),
     };
-  }
-  return state;
-}
-
-export function Divide(state: CalculateType) {
-  if (state.firstNumber !== "0") {
-    if (state.operator === "") {
-      return {
-        ...state,
-        operator: "/",
-      };
-    }
-    let divideNumbers: number =
-      Number(state.firstNumber) / Number(state.secondNumber);
-    return {
-      ...state,
-      firstNumber: divideNumbers.toString(),
-      display: divideNumbers.toString(),
-    };
-  }
-  return state;
-}
-
-export function Equal(state: CalculateType) {
-  if (state.firstNumber !== "" && state.secondNumber !== "") {
-    switch (state.operator) {
-      case "+":
-        return {
-          ...state,
-          operator: "",
-          display: Number(state.firstNumber) + Number(state.secondNumber),
-        };
-      case "-":
-        return {
-          ...state,
-          operator: "",
-          display: Number(state.firstNumber) - Number(state.secondNumber),
-        };
-      case "*":
-        return {
-          ...state,
-          operator: "",
-          display: Number(state.firstNumber) * Number(state.secondNumber),
-        };
-      case "/":
-        return {
-          ...state,
-          operator: "",
-          display: (
-            Number(state.firstNumber) / Number(state.secondNumber)
-          ).toFixed(10),
-        };
-      default:
-        return state;
-    }
   }
   return state;
 }

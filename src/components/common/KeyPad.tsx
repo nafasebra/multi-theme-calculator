@@ -14,16 +14,36 @@ function KeyPad() {
         useCalcContext.dispatch({ type: CalculateAction.REMOVE_LAST_CHAR });
         break;
       case "+":
-        useCalcContext.dispatch({ type: CalculateAction.SUM_OPERATOR });
+        if (useCalcContext.state.operator === "")
+          useCalcContext.dispatch({
+            type: CalculateAction.OPERATION,
+            payload: "+",
+          });
+        else useCalcContext.dispatch({ type: CalculateAction.EQUAL_TO });
         break;
       case "-":
-        useCalcContext.dispatch({ type: CalculateAction.MINUS_OPERATOR });
+        if (useCalcContext.state.operator === "")
+          useCalcContext.dispatch({
+            type: CalculateAction.OPERATION,
+            payload: "-",
+          });
+        else useCalcContext.dispatch({ type: CalculateAction.EQUAL_TO });
         break;
       case "*":
-        useCalcContext.dispatch({ type: CalculateAction.MULTIPLY_OPERATOR });
+        if (useCalcContext.state.operator === "")
+          useCalcContext.dispatch({
+            type: CalculateAction.OPERATION,
+            payload: "*",
+          });
+        else useCalcContext.dispatch({ type: CalculateAction.EQUAL_TO });
         break;
       case "/":
-        useCalcContext.dispatch({ type: CalculateAction.DIVIDE_OPERATOR });
+        if (useCalcContext.state.operator === "")
+          useCalcContext.dispatch({
+            type: CalculateAction.OPERATION,
+            payload: "/",
+          });
+        else useCalcContext.dispatch({ type: CalculateAction.EQUAL_TO });
         break;
       case "RESET":
         useCalcContext.dispatch({ type: CalculateAction.RESET });
