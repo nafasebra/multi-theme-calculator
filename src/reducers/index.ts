@@ -43,12 +43,11 @@ export function reducer(state = initialState, action: CalculateActionType) {
         display: "0",
       };
     case CalculateAction.ADD_TO_DISPLAY:
-      let ResultDisplay = display == "0" ? payload : display + payload;
       let ResultNumber = number == "0" ? payload : number + payload;
       return {
         ...state,
         number: number === "0" && payload === "0" ? "0" : ResultNumber,
-        display: operator === "" ? "0" : ResultDisplay,
+        display: display === "" ? "0" : display,
       };
     case CalculateAction.OPERATION:
       return calculator.Operation(state, payload);
