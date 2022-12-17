@@ -21,11 +21,6 @@ yarn
 ```bash
 npm ci
 ```
-- get your api from below link: [geo-apify](https://geo.ipify.org/)
-- and then set your api to the `.env` file:
-```js
-VITE_API_KEY = "{Your api}"
-```
 - and run project
 yarn:
 ```bash
